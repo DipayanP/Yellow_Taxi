@@ -1,0 +1,11 @@
+{
+	"name": "DippsAzKeyVltLinkedService01",
+	"properties": {
+		"description": "test azure key vault linked service",
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://dippskeyvault01.vault.azure.net/"
+		}
+	}
+}
