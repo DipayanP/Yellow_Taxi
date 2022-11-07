@@ -1,0 +1,63 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "dpdataenggadf02"
+		},
+		"DippsAzKeyVltLinkedService01_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://dippskeyvault01.vault.azure.net/"
+		},
+		"DippsAzKeyVltLinkedService02_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://dippskeyvault02.vault.azure.net/"
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1023-045654-78bcvbz3"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "dpdataenggadf02_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"DippsAzKeyVltLinkedService01_properties_typeProperties_baseUrl": {
+						"value": "[parameters('DippsAzKeyVltLinkedService01_properties_typeProperties_baseUrl')]"
+					},
+					"DippsAzKeyVltLinkedService02_properties_typeProperties_baseUrl": {
+						"value": "[parameters('DippsAzKeyVltLinkedService02_properties_typeProperties_baseUrl')]"
+					},
+					"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('AzureDatabricks1_properties_typeProperties_existingClusterId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
