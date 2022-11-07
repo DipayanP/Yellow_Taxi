@@ -15,6 +15,12 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [
+					{
+						"name": "ADF01",
+						"value": "Copy_Data"
+					}
+				],
 				"typeProperties": {
 					"notebookPath": "/dp_databricks01/demo_test"
 				},
