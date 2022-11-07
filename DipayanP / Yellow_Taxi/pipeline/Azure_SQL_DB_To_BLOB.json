@@ -1,0 +1,29 @@
+{
+	"name": "Azure_SQL_DB_To_BLOB",
+	"properties": {
+		"description": "Copying data from Azure SQL server to Azure Blob server",
+		"activities": [
+			{
+				"name": "Azure_SQLDB_to_BLOB",
+				"description": "Copying data from Azure SQL server to Azure Blob server",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"notebookPath": "/dp_databricks01/demo_test"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
