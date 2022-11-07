@@ -1,0 +1,11 @@
+{
+	"name": "DippsAzKeyVltLinkedService02",
+	"properties": {
+		"description": "Key valut conn test 02",
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://dippskeyvault02.vault.azure.net/"
+		}
+	}
+}
